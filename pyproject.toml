@@ -11,6 +11,8 @@ requests = "^2.32.5"
 python-dotenv = "^1.2.1"
 pandas = "^2.3.3"
 openpyxl = "^3.1.5"
+pytest = "^9.0.2"
+pandas-stubs = "^2.3.3.251201"
 
 
 [build-system]
