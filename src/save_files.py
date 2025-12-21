@@ -22,3 +22,14 @@ class SaveFile(ABC):
 class SaveFilesJSON(SaveFile):
     def __init__(self, name_file):
         self.name_file = 'vacancies.json'
+
+
+class FileManager:
+    def save_to_file(self, vacancies, filename):
+        with open(filename, 'w') as file:
+            for vacancy in vacancies:
+                file.write(f"{vacancy}\n")  # Предполагаем, что vacancy — это строка
+
+    def load_from_file(self, filename):
+        with open(filename, 'r') as file:
+            return file.readlines()  # Возвращаем список строк
