@@ -4,17 +4,45 @@ class Vacancy:
     def __init__(self, name, url, experience, schedule, salary, description):
         self.name = name
         self.url = url
-        self.experience = experience
+        self.experience = experience if experience else None
         self.schedule = schedule
-        self.salary = salary #по умолчанию должен быть 0
+        self.salary = salary if salary else 0
         self.description = description
 
     def __lt__(self, other):
-        if not isinstance(other, int):
+        if not isinstance(other.salary, int):
             raise TypeError("Значение заработной платы справа должен иметь тип int")
+        return self.salary < other.salary
 
-        sal = other if isinstance(other, int) else other.seconds
-        return self.salary < sal
+    def __gt__(self, other):
+        if not isinstance(other.salary, int):
+            raise TypeError("Значение заработной платы справа должен иметь тип int")
+        return self.salary > other.salary
+
+    def __eq__(self, other):
+        if not isinstance(other.salary, int):
+            raise TypeError("Значение заработной платы справа должен иметь тип int")
+        return self.salary == other.salary
+
+    def __ne__(self, other):
+        if not isinstance(other.salary, int):
+            raise TypeError("Значение заработной платы справа должен иметь тип int")
+        return self.salary != other.salary
+
+
+    @staticmethod
+    def cast_to_object_list(vacancy_list):
+        objects_list = []
+        for vacancy in vacancy_list:
+            object_vacancy = Vacancy(name=vacancy["name"],
+                                     url=vacancy["url"],
+                                     experience=vacancy["experience"],
+                                     schedule=vacancy["schedule"],
+                                     salary=vacancy["salary"],
+                                     description=vacancy["snippet"])
+            objects_list.append(object_vacancy)
+        return objects_list
+
 
 
 
