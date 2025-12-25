@@ -11,7 +11,7 @@ for vacancy in hh_vacancies:
 
  # Преобразование набора данных из JSON в список объектов
 vacancies_list = Vacancy.cast_to_object_list(hh_vacancies)
-print(vacancies_list)
+
 
 #
 # # Пример работы контструктора класса с одной вакансией
