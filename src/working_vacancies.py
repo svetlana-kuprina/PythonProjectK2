@@ -1,3 +1,6 @@
+from src.utils import class_to_dict
+
+
 class Vacancy:
     __slots__ = ('name', 'url', 'experience', 'schedule', 'salary_from', 'salary_to', 'description')
 
@@ -11,7 +14,7 @@ class Vacancy:
         self.description = description
         self.description = description
 
-    def __salary_from_method(self, salary:dict|None) -> int:
+    def __salary_from_method(self, salary: dict | None) -> int:
         """Валидация заработной платы поля from"""
 
         if salary is None:
@@ -21,7 +24,7 @@ class Vacancy:
 
         return salary['from']
 
-    def __salary_to_method(self, salary:dict|None) -> int:
+    def __salary_to_method(self, salary: dict | None) -> int:
         """Валидация заработной платы поля to"""
 
         if salary is None:
@@ -69,7 +72,7 @@ class Vacancy:
                 f" Требования: {self.description}")
 
     @staticmethod
-    def cast_to_object_list(vacancy_list:list) -> object:
+    def cast_to_object_list(vacancy_list: list) -> object:
         """Метод преобразование набора данных из JSON в список объектов"""
 
         objects_list = []
@@ -81,17 +84,17 @@ class Vacancy:
                                      salary=vacancy["salary"],
                                      description=vacancy["snippet"])
             objects_list.append(object_vacancy)
-            print(str(object_vacancy))
+            # print(str(object_vacancy))
         return objects_list
 
+    @staticmethod
+    def vacancies_list(vacancy_object_list: list) -> list:
+        """Метод преобразует список объектов класса Vacancy в список словарей"""
 
-class VacancyManager:
-
-    def __init__(self):
-        self.vacancies = []
-
-    def add_vacancies(self, vacancies):
-        self.vacancies.extend(vacancies)
-
-    def remove_vacancy(self, vacancy):
-        self.vacancies.remove(vacancy)
+        if vacancy_object_list is None:
+            return []
+        new_vacancies_list = []
+        for vacancy in vacancy_object_list:
+            list_vacancy = class_to_dict(vacancy)
+            new_vacancies_list.append(list_vacancy)
+        return new_vacancies_list

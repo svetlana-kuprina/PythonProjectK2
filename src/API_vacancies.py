@@ -40,6 +40,7 @@ class HH(VacanciesAPI):
 
     def _api_connections(self) -> Response | None:
         """Метод проверки API. Происходит проверка статус-кода ответа hh.ru."""
+
         try:
             response = requests.get(self.__url, headers=self.__headers, params=self.__params)
             response.raise_for_status()
@@ -50,6 +51,7 @@ class HH(VacanciesAPI):
 
     def load_vacancies(self, keyword:str, region='113', days=7) -> list:
         """Метод получения данных API сервиса вакансий с платформой hh.ru."""
+
         self.__params['text'] = keyword
         self.__params['area'] = region
         self.__params['period'] = days
