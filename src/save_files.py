@@ -7,21 +7,21 @@ class SaveFile(ABC):
     """класс для работы с файлами"""
 
     @abstractmethod
-    def save_to_file(self, vacancies):
+    def save_to_file(self, vacancies: list) -> None:
         """методы для добавления вакансий в файл"""
         pass
 
     @abstractmethod
-    def load_from_file(self):
+    def load_from_file(self) -> None:
         """методы для получения данных из файла"""
         pass
 
-    def load_write_from_file(self, new_vacancies_list):
+    def load_write_from_file(self, new_vacancies_list: list) -> None:
         """методы для получения данных из файла проверки их на уникальность и записи в файл"""
         pass
 
     @abstractmethod
-    def del_vacancies_file(self):
+    def del_vacancies_file(self) -> None:
         """методы для удаления информации о вакансиях"""
         pass
 
@@ -29,17 +29,17 @@ class SaveFile(ABC):
 class SaveFilesJSON(SaveFile):
     """класс для работы с файлами JSON"""
 
-    def __init__(self, name_file="vacancies.json"):
+    def __init__(self, name_file="vacancies.json") -> None:
         self.name_file = name_file
         self.pathfile = os.path.join(os.path.dirname(__file__), "../data", self.name_file)
 
-    def save_to_file(self, vacancies):
+    def save_to_file(self, vacancies: list) -> None:
         """методы для добавления вакансий в файл JSON"""
 
         with open(self.pathfile, "w", encoding="UTF-8") as file:
             json.dump(vacancies, file, ensure_ascii=False, indent=2)
 
-    def load_from_file(self):
+    def load_from_file(self) -> None:
         """методы для получения данных из файла"""
 
         try:
@@ -53,7 +53,7 @@ class SaveFilesJSON(SaveFile):
         except json.decoder.JSONDecodeError:
             return []
 
-    def load_write_from_file(self, new_vacancies_list):
+    def load_write_from_file(self, new_vacancies_list: list) -> None:
         """методы для получения данных из файла проверки их на уникальность и записи в файл"""
 
         with open(self.pathfile, "r+", encoding="UTF-8") as file:
@@ -76,6 +76,6 @@ class SaveFilesJSON(SaveFile):
             except Exception as e:
                 print(e)
 
-    def del_vacancies_file(self):
+    def del_vacancies_file(self) -> None:
         with open("file.txt", "w"):
             pass
