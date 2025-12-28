@@ -27,7 +27,7 @@ class SaveFile(ABC):
 
 
 class SaveFilesJSON(SaveFile):
-    """класс для работы с файлами JSON"""
+    """Класс для работы с файлами JSON"""
 
     def __init__(self, name_file="vacancies.json") -> None:
         self.name_file = name_file

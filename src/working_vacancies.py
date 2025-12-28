@@ -2,6 +2,8 @@ from src.utils import class_to_dict
 
 
 class Vacancy:
+    """Класс для работы с вакансиями."""
+
     __slots__ = ("name", "url", "experience", "schedule", "salary_from", "salary_to", "description")
 
     def __init__(self, name, url, experience, schedule, salary, description):
