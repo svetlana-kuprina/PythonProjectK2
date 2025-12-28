@@ -36,29 +36,29 @@ class Vacancy:
     def __lt__(self, other):
         """Сравнение заработной платы <"""
 
-        if not isinstance(other.__salary_from, int):
-            raise TypeError("Значение заработной платы справа должен иметь тип int")
+        # if not isinstance(other, int):
+            # raise TypeError("Значение заработной платы справа должен иметь тип int")
         return (self.salary_from < other.salary_from) or (self.salary_to < other.salary_to)
 
     def __gt__(self, other):
         """Сравнение заработной платы >"""
 
-        if not isinstance(other.__salary_from, int):
-            raise TypeError("Значение заработной платы справа должен иметь тип int")
+        # if not isinstance(other, int):
+            # raise TypeError("Значение заработной платы справа должен иметь тип int")
         return (self.salary_from > other.salary_from) or (self.salary_to > other.salary_to)
 
     def __eq__(self, other):
         """Сравнение заработной платы =="""
 
-        if not isinstance(other.__salary_from, int):
-            raise TypeError("Значение заработной платы справа должен иметь тип int")
+        # if not isinstance(other, int):
+            # raise TypeError("Значение заработной платы справа должен иметь тип int")
         return (self.salary_from == other.salary_from) or (self.salary_to == other.salary_to)
 
     def __ne__(self, other):
         """Сравнение заработной платы !="""
 
-        if not isinstance(other.__salary_from, int):
-            raise TypeError("Значение заработной платы справа должен иметь тип int")
+        # if not isinstance(other, int):
+        #     raise TypeError("Значение заработной платы справа должен иметь тип int")
         return (self.salary_from != other.salary_from) or (self.salary_to != other.salary_to)
 
     def __str__(self):

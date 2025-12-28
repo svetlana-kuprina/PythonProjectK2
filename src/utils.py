@@ -1,4 +1,4 @@
-def class_to_dict(vacancies) -> dict:
+def class_to_dict(vacancies: object) -> dict:
     """Метод преобразует объект класса в словарь"""
 
     return {'name': vacancies.name,
